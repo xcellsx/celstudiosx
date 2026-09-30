@@ -4,3 +4,4 @@
 # Scratch exports that aren't portfolio-ready
 exports/tmp/
 __pycache__/
+*~lock~
