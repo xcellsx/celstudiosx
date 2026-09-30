@@ -12,7 +12,7 @@ The portfolio is split into three sections:
 
 | # | Project | Brief | Status |
 |---|---|---|---|
-| 01 | [Athena](projects/01-athena/) | designerbriefs #47: makeup brand, identity + packaging | Direction locked (Temple by candlelight); olive-scroll monogram chosen, refining next |
+| 01 | [Athena](projects/01-athena/) | designerbriefs #47: makeup brand, identity + packaging | Direction locked (Temple by candlelight); owl-face letter monogram chosen, refining next |
 
 ## Structure
 

@@ -48,7 +48,14 @@ The monogram style comes from a blanchestudio_ submark on Instagram (an unused c
 2. **Helmet:** the strokes sweep up into the helmet's crest, and the space inside the "A" becomes the helmet's T-shaped face opening, like a Corinthian helmet seen from the front.
 3. **Olive flourish:** a simpler mirrored "A" whose stroke ends finish in small olive leaves.
 
-**Chosen: olive scrolls.** The olive concept, pushed further into curls and spirals (sketches: `exports/monogram-sketches-v1.png` for all three, `exports/monogram-olive-scrolls-v2.png` for this one):
+**Chosen: owl face from letters.** Two italic Didone "a"s set back to back (one mirrored) so the bowls become the owl's eyes, with a small "v" tucked between them as the beak. It's the hidden-owl idea built from real type, so the monogram shares its "a" with the wordmark. Studies in `exports/monogram-owl-letters-v3.png`:
+- Tuck the beak up between the eyes; below them it reads as a mouth.
+- Leave a small gap between the two bowls so each eye reads as its own shape.
+- Optional: a dot in each bowl for pupils, and a beaded coin rim (like the Athenian owl coin) for the compact.
+
+A stacked wordmark (AT / HE / NA in italic) is being tested alongside it as a secondary lockup.
+
+**Earlier round: olive scrolls.** The olive concept, pushed further into curls and spirals (sketches: `exports/monogram-sketches-v1.png` for all three, `exports/monogram-olive-scrolls-v2.png` for this one). Parked; the spirals could come back as ornament:
 - **Crown:** the legs cross at the apex and each rolls into a spiral, like the volutes on an Ionic column capital. A single olive leaf stands between them.
 - **Crossbar:** a cupid's-bow curve (a nod to lips) whose ends cross the legs and curl into small spirals outside them.
 - **Feet:** each leg winds into a spiral, with two olive leaves sprouting from it.
@@ -100,7 +107,7 @@ The first four are sampled from the moodboard. Gilt is a flat stand-in for foil 
 ## Progress
 - [x] Pick a direction: Temple by candlelight (marble and gold, lit like night oracle)
 - [ ] Moodboard: add products, helmet and eye makeup references
-- [x] Logo exploration: three monogram concepts (owl, helmet, olive) and the wordmark. Chose olive, pushed into olive scrolls
+- [x] Logo exploration: three monogram concepts (owl, helmet, olive) and the wordmark. Chose an owl face built from mirrored italic a's
 - [ ] Refine the chosen monogram, plus lockups
 - [ ] Palette, type and graphic elements locked
 - [ ] Brand board and portfolio slides

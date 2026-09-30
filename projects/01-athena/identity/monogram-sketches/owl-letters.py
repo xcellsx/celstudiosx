@@ -32,7 +32,7 @@ def owl(cx, cy, size, fill, gap, beak_dy, beak_size, pupils=False, ring=False):
     if pupils:
         for s in (-1, 1):
             parts.append(
-                f'<circle cx="{cx + s * (gap + size * 0.125):.1f}" cy="{cy - size * 0.195:.1f}" '
+                f'<circle cx="{cx + s * (gap + size * 0.175):.1f}" cy="{cy - size * 0.2:.1f}" '
                 f'r="{size * 0.035:.1f}" fill="{fill}"/>'
             )
     if ring:
