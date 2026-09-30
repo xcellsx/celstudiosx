@@ -268,6 +268,67 @@ OLIVE_SCROLL = {
     ],
 }
 
+# --- Concept 4: flourished A ---------------------------------------------------
+# Copperplate-style flourishing: only the legs carry heavy shades; the loops are
+# hairline ovals with light swells, crossing the letter at near right angles.
+def flourish(step=30):
+    return {
+    "strokes": [
+        # leg, running on into the start of the foot swash
+        (chain((500, 240), ((470, 340), (380, 620), (330, 800)), ((314, 862), (250, 900), (180, 878))), 38),
+        # crown: rises past the apex, loops over the top and curls in
+        (
+            chain(
+                (500, 240),
+                ((525, 180), (560, 110), (520, 75)),
+                ((480, 42), (385, 55), (375, 120)),
+                ((366, 180), (430, 215), (462, 190)),
+            )
+            + spiral((440, 175), 27, 6, 34, -420, step),
+            18,
+            3,
+        ),
+        # foot: big oval swash under the leg, back up and into a spiral
+        (
+            chain(
+                (330, 800),
+                ((314, 862), (250, 900), (180, 878)),
+                ((105, 855), (95, 755), (160, 722)),
+                ((225, 690), (300, 735), (282, 785)),
+            )
+            + spiral((245, 772), 39, 8, 20, 420, step),
+            20,
+            3,
+        ),
+        # crossbar: hairline from the centre, crosses the leg, loops outside it
+        (
+            chain(
+                (500, 575),
+                ((455, 548), (365, 535), (300, 565)),
+                ((235, 596), (245, 670), (305, 660)),
+                ((355, 652), (372, 606), (345, 590)),
+            ),
+            14,
+            3,
+        ),
+        # long outer swash from the crown loop down past the crossbar loop
+        (
+            chain(
+                (375, 120),
+                ((330, 200), (200, 300), (180, 450)),
+                ((165, 560), (215, 610), (250, 600)),
+            ),
+            16,
+            3,
+        ),
+    ],
+    "shapes": [leaf((500, 232), 270, 56, 12)],
+    "mirror_shapes": [],
+    }
+
+
+FLOURISH = flourish()
+
 CONCEPTS = [
     ("owl", "Hidden owl", "The loops are the owl's eyes", OWL),
     ("helmet", "Helmet", "Plume crest, almond eyes, cheek guards", HELMET),
@@ -374,5 +435,6 @@ if __name__ == "__main__":
     for slug, _, _, concept in CONCEPTS:
         write_single(slug, concept)
     write_single("olive-scroll", OLIVE_SCROLL)
+    write_single("flourish", FLOURISH)
     write_sheet()
     write_olive_sheet()

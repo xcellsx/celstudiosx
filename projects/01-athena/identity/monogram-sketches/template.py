@@ -9,7 +9,7 @@ Run: python3 template.py
 import math
 import os
 
-from generate import chain, leaf, mirror_d, mirror_poly, poly_d, ribbon, spiral
+from generate import FLOURISH, chain, flourish, leaf, mirror_d, mirror_poly, poly_d, ribbon, spiral
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 INK = "#25190F"
@@ -73,9 +73,17 @@ def skeleton(segs, prefix):
     return "".join(out)
 
 
+FLOURISHED = {
+    "strokes": [(s[0][:1], *s[1:]) if i == 0 else s for i, s in enumerate(flourish(step=90)["strokes"])],
+    "shape_strokes": FLOURISH["strokes"],
+    "leaves": [],
+    "centre_leaf": FLOURISH["shapes"][0],
+}
+
+
 def write_template(slug, spec, title):
     shape = []
-    for segs, wmax, *hair in spec["strokes"]:
+    for segs, wmax, *hair in spec.get("shape_strokes", spec["strokes"]):
         poly = ribbon(segs, wmax, hair=hair[0] if hair else 3.0)
         shape.append(f'<path d="{poly_d(poly)}"/><path d="{poly_d(mirror_poly(poly))}"/>')
     for d in spec["leaves"]:
@@ -86,14 +94,14 @@ def write_template(slug, spec, title):
     guides = (
         f'<line x1="500" y1="40" x2="500" y2="915" stroke="{BRONZE}" stroke-width="1" stroke-dasharray="8 6"/>'
         f'<line x1="120" y1="815" x2="880" y2="815" stroke="{BRONZE}" stroke-width="1" stroke-dasharray="2 6"/>'
-        f'<text x="40" y="60" font-family="\'Avenir Next\', sans-serif" font-size="18" fill="{BRONZE}">{title}</text>'
+        f'<text x="40" y="30" font-family="\'Avenir Next\', sans-serif" font-size="15" fill="{BRONZE}">{title}</text>'
         f'<text font-family="\'Avenir Next\', sans-serif" font-size="15" fill="{BRONZE}">'
-        '<tspan x="40" y="945">Trace the rose paths on the left only: click the dots in order (A1, A2… then B1, B2…) '
-        "and drag each handle out to its hollow circle.</tspan>"
+        '<tspan x="40" y="945">Trace the rose paths on the left only, one stroke per letter: click the dots in order '
+        "(A1, A2…) and drag each handle out to its hollow circle.</tspan>"
         '<tspan x="40" y="968">Then duplicate, Flip Horizontal, and line the copy up on the dashed centre line.</tspan></text>'
     )
     paths = "".join(
-        f'<g id="stroke-{"AB"[i]}">{skeleton(segs, "AB"[i])}</g>' for i, (segs, *_) in enumerate(spec["strokes"])
+        f'<g id="stroke-{"ABCDE"[i]}">{skeleton(segs, "ABCDE"[i])}</g>' for i, (segs, *_) in enumerate(spec["strokes"])
     )
     svg = (
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">'
@@ -110,3 +118,6 @@ def write_template(slug, spec, title):
 if __name__ == "__main__":
     write_template("template-a-plain", PLAIN, "Plain A: add your own flourishes")
     write_template("template-a-scrolls", SCROLLS, "Scroll A: spirals at the crown, crossbar and feet")
+    write_template(
+        "template-a-flourished", FLOURISHED, "Flourished A: A leg, B crown loop, C foot swash, D crossbar loop, E outer swash"
+    )
