@@ -48,6 +48,11 @@ The monogram style comes from a blanchestudio_ submark on Instagram (an unused c
 2. **Helmet:** the strokes sweep up into the helmet's crest, and the space inside the "A" becomes the helmet's T-shaped face opening, like a Corinthian helmet seen from the front.
 3. **Olive flourish:** a simpler mirrored "A" whose stroke ends finish in small olive leaves.
 
+**Chosen: olive scrolls.** The olive concept, pushed further into curls and spirals (sketches: `exports/monogram-sketches-v1.png` for all three, `exports/monogram-olive-scrolls-v2.png` for this one):
+- **Crown:** the legs cross at the apex and each rolls into a spiral, like the volutes on an Ionic column capital. A single olive leaf stands between them.
+- **Crossbar:** a cupid's-bow curve (a nod to lips) whose ends cross the legs and curl into small spirals outside them.
+- **Feet:** each leg winds into a spiral, with two olive leaves sprouting from it.
+
 **Drawing it in Affinity:**
 1. Draw only the **left half** with the Pen tool, as a single path.
 2. Stroke it and give it a **variable-width profile** (Stroke panel → Pressure), thick on the downstrokes and thin on the upstrokes, like a calligraphy pen.
@@ -95,7 +100,7 @@ The first four are sampled from the moodboard. Gilt is a flat stand-in for foil 
 ## Progress
 - [x] Pick a direction: Temple by candlelight (marble and gold, lit like night oracle)
 - [ ] Moodboard: add products, helmet and eye makeup references
-- [ ] Logo exploration: three monogram concepts (owl, helmet, olive) and the wordmark
+- [x] Logo exploration: three monogram concepts (owl, helmet, olive) and the wordmark. Chose olive, pushed into olive scrolls
 - [ ] Refine the chosen monogram, plus lockups
 - [ ] Palette, type and graphic elements locked
 - [ ] Brand board and portfolio slides

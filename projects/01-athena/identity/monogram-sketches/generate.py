@@ -41,6 +41,32 @@ def chain(start, *curves):
     return segs
 
 
+def spiral(center, r0, r1, a0, sweep, step=30):
+    """Spiral as cubic segments. Angles in degrees, SVG orientation (y down):
+    positive sweep turns clockwise on screen. Radius eases from r0 to r1."""
+    cx, cy = center
+    n = max(1, math.ceil(abs(sweep) / step))
+    d_theta = math.radians(sweep) / n
+    dr = (r1 - r0) / n
+
+    def point(i):
+        th = math.radians(a0) + d_theta * i
+        r = r0 + dr * i
+        p = (cx + r * math.cos(th), cy + r * math.sin(th))
+        v = (
+            (dr / d_theta) * math.cos(th) - r * math.sin(th),
+            (dr / d_theta) * math.sin(th) + r * math.cos(th),
+        )
+        return p, v
+
+    segs = []
+    for i in range(n):
+        (p0, v0), (p3, v3) = point(i), point(i + 1)
+        k = d_theta / 3
+        segs.append((p0, (p0[0] + v0[0] * k, p0[1] + v0[1] * k), (p3[0] - v3[0] * k, p3[1] - v3[1] * k), p3))
+    return segs
+
+
 def smoothstep(x):
     x = max(0.0, min(1.0, x))
     return x * x * (3 - 2 * x)
@@ -212,6 +238,36 @@ OLIVE = {
     ],
 }
 
+# --- Concept 3b: olive scrolls ------------------------------------------------
+# The legs cross at the apex and roll into Ionic-capital volutes, the feet wind
+# into spirals that sprout olive leaves, and the cupid's-bow crossbar ends in
+# small curls outside the legs.
+OLIVE_SCROLL = {
+    "strokes": [
+        (
+            spiral((598, 212), 9, 50, 810, -540)
+            + chain(
+                (598, 162),
+                ((560, 162), (512, 200), (500, 240)),
+                ((472, 336), (335, 660), (335, 815)),
+            )
+            + spiral((275, 815), 60, 12, 0, 480),
+            36,
+        ),
+        (
+            chain((500, 580), ((478, 622), (385, 632), (322, 632)))
+            + spiral((322, 604), 28, 6, 90, 450),
+            16,
+            4,
+        ),
+    ],
+    "shapes": [leaf((500, 196), 270, 64, 13)],
+    "mirror_shapes": [
+        leaf((252, 856), 118, 78, 17),
+        leaf((238, 842), 158, 70, 15),
+    ],
+}
+
 CONCEPTS = [
     ("owl", "Hidden owl", "The loops are the owl's eyes", OWL),
     ("helmet", "Helmet", "Plume crest, almond eyes, cheek guards", HELMET),
@@ -282,7 +338,41 @@ def write_sheet():
         f.write(svg)
 
 
+def write_olive_sheet():
+    panel = 800
+    body = [f'<rect width="{panel * 2}" height="{panel * 2}" fill="{UMBER}"/>']
+    body.append(f'<rect x="0" y="{panel}" width="{panel}" height="{panel}" fill="{DEEP}"/>')
+    body.append(f'<line x1="{panel}" x2="{panel}" y1="60" y2="{panel - 60}" stroke="{DEEP}" stroke-width="2"/>')
+    panels = [
+        (0, 0, OLIVE, MARBLE, "Before", "Olive flourish, first sketch"),
+        (panel, 0, OLIVE_SCROLL, MARBLE, "Olive scrolls", "Ionic volutes, spiral feet, curled crossbar"),
+        (0, panel, OLIVE_SCROLL, GILT, "Gold foil", "Gilt on deep umber, as on a compact lid"),
+    ]
+    for x0, y0, concept, fill, title, note in panels:
+        body.append(f'<g transform="translate({x0 + 150} {y0 + 70}) scale(0.5)">')
+        body.append(monogram_paths(concept, fill))
+        body.append("</g>")
+        body.append(label(x0 + panel / 2, y0 + 640, title, note))
+    x0 = y0 = panel
+    body.append(f'<g transform="translate({x0 + 290} {y0 + 90}) scale(0.22)">')
+    body.append(monogram_paths(OLIVE_SCROLL, GILT))
+    body.append("</g>")
+    body.append(
+        f'<text x="{x0 + 400 + 12}" y="{y0 + 410}" text-anchor="middle" font-family="Didot, \'Bodoni 72\', serif" '
+        f'font-size="80" letter-spacing="24" fill="{MARBLE}">ATHENA</text>'
+    )
+    body.append(label(x0 + 400, y0 + 640, "Lockup", "Monogram over the wordmark"))
+    svg = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {panel * 2} {panel * 2}" '
+        f'width="{panel * 2}" height="{panel * 2}">' + "".join(body) + "</svg>"
+    )
+    with open(os.path.join(HERE, "sheet-olive.svg"), "w") as f:
+        f.write(svg)
+
+
 if __name__ == "__main__":
     for slug, _, _, concept in CONCEPTS:
         write_single(slug, concept)
+    write_single("olive-scroll", OLIVE_SCROLL)
     write_sheet()
+    write_olive_sheet()
