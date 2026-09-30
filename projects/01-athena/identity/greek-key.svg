@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 11" width="528" height="44">
+  <!-- One repeat is 11 units wide. Every gap between parallel lines is 3 units, stroke 1 unit, so scale uniformly only. -->
+  <g fill="none" stroke="#C9A45C" stroke-width="1" stroke-linejoin="miter">
+    <path d="M0 10 H132" />
+    <path d="M1 10 V1 H9 V7 H4 V4 H6" />
+    <path d="M12 10 V1 H20 V7 H15 V4 H17" />
+    <path d="M23 10 V1 H31 V7 H26 V4 H28" />
+    <path d="M34 10 V1 H42 V7 H37 V4 H39" />
+    <path d="M45 10 V1 H53 V7 H48 V4 H50" />
+    <path d="M56 10 V1 H64 V7 H59 V4 H61" />
+    <path d="M67 10 V1 H75 V7 H70 V4 H72" />
+    <path d="M78 10 V1 H86 V7 H81 V4 H83" />
+    <path d="M89 10 V1 H97 V7 H92 V4 H94" />
+    <path d="M100 10 V1 H108 V7 H103 V4 H105" />
+    <path d="M111 10 V1 H119 V7 H114 V4 H116" />
+    <path d="M122 10 V1 H130 V7 H125 V4 H127" />
+  </g>
+</svg>
